@@ -1,0 +1,12 @@
+:host {
+  justify-content: center;
+}
+
+.card {
+  width: 150px;
+  flex: initial;
+}
+
+.card-deck.loading .card .card-body > span {
+  color: #555;
+}
