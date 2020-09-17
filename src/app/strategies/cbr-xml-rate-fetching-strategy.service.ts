@@ -33,7 +33,7 @@ export class CbrXmlRateFetchingStrategyService implements RateFetchingStrategy {
           return
         }
 
-        if (!result && !result.hasOwnProperty('ValCurs')) {
+        if (!result || !result.hasOwnProperty('ValCurs')) {
           subscriber.error('Wrong response from CBR xml source!')
           subscriber.complete()
           return
