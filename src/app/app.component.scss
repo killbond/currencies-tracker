@@ -5,6 +5,9 @@
 .card {
   width: 150px;
   flex: initial;
+  @media (max-width: 576px) {
+    width: auto;
+  }
 }
 
 .card-deck.loading .card .card-body > span {

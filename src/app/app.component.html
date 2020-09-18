@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container pt-5">
   <div [class.loading]="loading" class="card-deck mb-3 flex-wrap justify-content-center">
-    <div *ngFor="let rate of rates; trackBy: ( 'code' | trackByProperty )" class="card">
+    <div *ngFor="let rate of rates; trackBy: ( 'code' | trackByProperty )" class="card mb-3">
       <div class="card-body text-center">
         <div class="card-title">{{ rate.code }}RUB</div>
         <span class="font-weight-bold">{{ rate.value }}</span>
