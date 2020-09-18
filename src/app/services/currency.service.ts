@@ -1,28 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Inject, Injectable } from '@angular/core';
 import { RateFetchingStrategy } from "../interfaces/rate-fetching-strategy";
-import { CbrJsonRateFetchingStrategyService } from "../strategies/cbr-json-rate-fetching-strategy.service";
-import { CbrXmlRateFetchingStrategyService } from "../strategies/cbr-xml-rate-fetching-strategy.service";
 import { from, Observable, of } from "rxjs";
 import { Rate } from "../interfaces/rate";
 import { catchError, concatMap, filter, finalize, takeWhile } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrencyService {
-
-  private readonly strategies: RateFetchingStrategy[]
 
   private lastSuccessfulStrategy: RateFetchingStrategy
 
   constructor(
-    private http: HttpClient
+    @Inject('RateFetchingStrategy') private strategies: RateFetchingStrategy[]
   ) {
-    this.strategies = [
-      new CbrJsonRateFetchingStrategyService(this.http),
-      new CbrXmlRateFetchingStrategyService(this.http),
-    ]
   }
 
   getCurrencies(): Observable<Rate[]> {
